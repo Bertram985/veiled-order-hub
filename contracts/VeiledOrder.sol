@@ -63,6 +63,8 @@ contract VeiledOrder is SepoliaConfig {
         FHE.allowThis(encPrice);
         FHE.allow(encAmount, msg.sender);
         FHE.allow(encPrice, msg.sender);
+
+        emit OrderSubmitted(msg.sender, orderIndex, isBuy);
     }
 
     /// @notice Get the caller's order indices
