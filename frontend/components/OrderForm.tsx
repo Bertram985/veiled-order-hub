@@ -22,6 +22,10 @@ export const OrderForm = ({
     const amountNum = parseFloat(amount);
     const priceNum = parseFloat(price);
 
+    if (isNaN(amountNum) || isNaN(priceNum) || amountNum <= 0 || priceNum <= 0) {
+      return;
+    }
+
     onSubmit(amountNum, priceNum, isBuy);
     setAmount("");
     setPrice("");
