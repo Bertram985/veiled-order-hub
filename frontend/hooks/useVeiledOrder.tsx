@@ -340,6 +340,8 @@ export const useVeiledOrder = (parameters: {
             return;
           }
 
+          // Refresh orders after submission
+          refreshMyOrders();
         } catch (e: any) {
           const base = `Order submission failed! error=${e?.message || String(e)}`;
           const extra =
