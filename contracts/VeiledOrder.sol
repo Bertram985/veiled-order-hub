@@ -87,6 +87,7 @@ contract VeiledOrder is SepoliaConfig {
         uint256 timestamp,
         address owner
     ) {
+        require(orderIndex < _orders.length, "Order does not exist");
         Order storage order = _orders[orderIndex];
         return (order.amount, order.price, order.isBuy, order.timestamp, _orderOwner[orderIndex]);
     }
