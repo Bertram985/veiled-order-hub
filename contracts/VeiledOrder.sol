@@ -47,6 +47,7 @@ contract VeiledOrder is SepoliaConfig {
         euint32 encPrice = FHE.fromExternal(price, inputProof);
 
         uint256 orderIndex = _orders.length;
+        address sender = msg.sender;
         
         _orders.push(Order({
             amount: encAmount,
@@ -55,16 +56,16 @@ contract VeiledOrder is SepoliaConfig {
             timestamp: block.timestamp
         }));
 
-        _userOrders[msg.sender].push(orderIndex);
-        _orderOwner[orderIndex] = msg.sender;
+        _userOrders[sender].push(orderIndex);
+        _orderOwner[orderIndex] = sender;
 
         // Allow contract re-encryption and the caller to decrypt
         FHE.allowThis(encAmount);
         FHE.allowThis(encPrice);
-        FHE.allow(encAmount, msg.sender);
-        FHE.allow(encPrice, msg.sender);
+        FHE.allow(encAmount, sender);
+        FHE.allow(encPrice, sender);
 
-        emit OrderSubmitted(msg.sender, orderIndex, isBuy);
+        emit OrderSubmitted(sender, orderIndex, isBuy);
     }
 
     /// @notice Get the caller's order indices
