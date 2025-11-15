@@ -104,11 +104,16 @@ export const OrderForm = ({
               }`}
               disabled={!canSubmit || isSubmitting}
             >
-              {isSubmitting
-                ? "Submitting..."
-                : isBuy
-                  ? "Submit Buy Order"
-                  : "Submit Sell Order"}
+              {isSubmitting ? (
+                <>
+                  <span className="loading loading-spinner loading-sm"></span>
+                  Submitting...
+                </>
+              ) : isBuy ? (
+                "Submit Buy Order"
+              ) : (
+                "Submit Sell Order"
+              )}
             </button>
           </div>
         </form>
