@@ -7,6 +7,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
+  console.log(`Deploying VeiledOrder with account: ${deployer}`);
+
   const deployed = await deploy("VeiledOrder", {
     from: deployer,
     log: true,
@@ -14,7 +16,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     skipIfAlreadyDeployed: true,
   });
 
-  console.log(`VeiledOrder contract: `, deployed.address);
+  console.log(`VeiledOrder contract deployed at: ${deployed.address}`);
 };
 export default func;
 func.id = "deploy_veiledOrder"; // id required to prevent reexecution
