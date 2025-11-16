@@ -7,9 +7,9 @@ import { WalletConnectButton } from "@/components/WalletConnectButton";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Veiled Order Hub",
+  title: "Veiled Order Hub - Privacy-Preserving Trading",
   description:
-    "Submit, manage, and decrypt privacy-preserving orders on FHEVM.",
+    "Submit, manage, and decrypt privacy-preserving encrypted trading orders using FHEVM technology.",
 };
 
 export default async function RootLayout({
