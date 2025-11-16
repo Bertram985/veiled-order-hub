@@ -33,6 +33,7 @@ describe("VeiledOrder", function () {
 
   beforeEach(async function () {
     // Check whether the tests are running against an FHEVM mock environment
+    // These tests require a local FHEVM mock for encrypted operations
     if (!fhevm.isMock) {
       console.warn(`This hardhat test suite cannot run on Sepolia Testnet`);
       this.skip();
