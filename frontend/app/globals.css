@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles for Veiled Order Hub */
+
 .zama-bg {
   background-color: #ffd200;
 }
