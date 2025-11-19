@@ -27,6 +27,7 @@ export const OrderForm = ({
     }
 
     onSubmit(amountNum, priceNum, isBuy);
+    // Reset form after submission
     setAmount("");
     setPrice("");
   };
@@ -104,16 +105,11 @@ export const OrderForm = ({
               }`}
               disabled={!canSubmit || isSubmitting}
             >
-              {isSubmitting ? (
-                <>
-                  <span className="loading loading-spinner loading-sm"></span>
-                  Submitting...
-                </>
-              ) : isBuy ? (
-                "Submit Buy Order"
-              ) : (
-                "Submit Sell Order"
-              )}
+              {isSubmitting
+                ? "Submitting..."
+                : isBuy
+                  ? "Submit Buy Order"
+                  : "Submit Sell Order"}
             </button>
           </div>
         </form>

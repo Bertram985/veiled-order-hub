@@ -150,25 +150,11 @@ export const VeiledOrderDemo = () => {
             onClick={veiledOrder.refreshMyOrders}
             disabled={!veiledOrder.canRefresh || veiledOrder.isRefreshing}
           >
-            {veiledOrder.isRefreshing ? (
-              <>
-                <span className="loading loading-spinner loading-xs"></span>
-                Refreshing...
-              </>
-            ) : (
-              "Refresh"
-            )}
+            {veiledOrder.isRefreshing ? "Refreshing..." : "Refresh"}
           </button>
         </div>
 
-        {veiledOrder.isRefreshing && veiledOrder.orders.length === 0 ? (
-          <div className="card bg-base-100 shadow-xl border-2 border-dashed border-gray-300">
-            <div className="card-body text-center">
-              <span className="loading loading-spinner loading-lg"></span>
-              <p className="text-gray-500">Loading orders...</p>
-            </div>
-          </div>
-        ) : veiledOrder.orders.length === 0 ? (
+        {veiledOrder.orders.length === 0 ? (
           <div className="card bg-base-100 shadow-xl border-2 border-dashed border-gray-300">
             <div className="card-body text-center">
               <p className="text-gray-500">No orders yet. Submit your first order above!</p>

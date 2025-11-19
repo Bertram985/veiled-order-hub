@@ -18,18 +18,11 @@ export const TradeCard = ({
   isDecrypting,
 }: TradeCardProps) => {
   const formatTimestamp = (timestamp: bigint) => {
-    try {
-      const date = new Date(Number(timestamp) * 1000);
-      return date.toLocaleString();
-    } catch (error) {
-      return "Invalid date";
-    }
+    const date = new Date(Number(timestamp) * 1000);
+    return date.toLocaleString();
   };
 
   const formatAddress = (address: string) => {
-    if (!address || address.length < 10) {
-      return address;
-    }
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 

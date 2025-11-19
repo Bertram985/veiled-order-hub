@@ -6,9 +6,9 @@ import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /// @title VeiledOrder - Private order storage using FHEVM
 /// @notice Stores encrypted trading orders (buy/sell) with amount and price
+
 /// @author Jo0088
 /// @dev This contract enables privacy-preserving order submission and retrieval
-/// @dev Uses Zama's FHEVM for fully homomorphic encryption on-chain
 contract VeiledOrder is SepoliaConfig {
     struct Order {
         euint32 amount; // Encrypted amount in ETH (scaled by 1000 to support decimals)
@@ -47,7 +47,6 @@ contract VeiledOrder is SepoliaConfig {
         euint32 encPrice = FHE.fromExternal(price, inputProof);
 
         uint256 orderIndex = _orders.length;
-        address sender = msg.sender;
         
         _orders.push(Order({
             amount: encAmount,
@@ -56,16 +55,16 @@ contract VeiledOrder is SepoliaConfig {
             timestamp: block.timestamp
         }));
 
-        _userOrders[sender].push(orderIndex);
-        _orderOwner[orderIndex] = sender;
+        _userOrders[msg.sender].push(orderIndex);
+        _orderOwner[orderIndex] = msg.sender;
 
         // Allow contract re-encryption and the caller to decrypt
         FHE.allowThis(encAmount);
         FHE.allowThis(encPrice);
-        FHE.allow(encAmount, sender);
-        FHE.allow(encPrice, sender);
+        FHE.allow(encAmount, msg.sender);
+        FHE.allow(encPrice, msg.sender);
 
-        emit OrderSubmitted(sender, orderIndex, isBuy);
+        emit OrderSubmitted(msg.sender, orderIndex, isBuy);
     }
 
     /// @notice Get the caller's order indices
