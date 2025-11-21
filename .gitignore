@@ -17,6 +17,9 @@ dist-ssr
 *.env
 # fhevm
 fhevmTemp
+/cache
+/artifacts
+/fhevmTemp
 # files
 # Hardhat files
 .idea
