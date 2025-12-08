@@ -7,7 +7,7 @@ A privacy-preserving decentralized trading platform built with **Fully Homomorph
 
 ## 🎥 Demo
 
-**[Live Demo](https://veiled-order-hub.vercel.app/)** | [Demo Video](demo.mp4)
+**[Live Demo](https://veiled-order-hub-fjslq.vercel.app/)** | [Demo Video](demo.mp4)
 
 Experience privacy-preserving order submission with encrypted amounts and prices that remain confidential on the blockchain while still being verifiable.
 
@@ -158,7 +158,7 @@ npx hardhat verify --network sepolia <CONTRACT_ADDRESS>
 
 The frontend is deployed on Vercel and automatically updates with each push to main branch.
 
-**Live URL**: [https://veiled-order-hub.vercel.app/](https://veiled-order-hub.vercel.app/)
+**Live URL**: [https://veiled-order-hub-fjslq.vercel.app/](https://veiled-order-hub-fjslq.vercel.app/)
 
 ## 🧪 Testing
 
